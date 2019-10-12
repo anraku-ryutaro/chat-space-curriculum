@@ -1,6 +1,6 @@
 $(function(){ 
   function buildHTML(message){
-    // console.log(message.id);
+  
    if ( message.image ) {
     var html =
     `<div class='chatroom__body-message clearfix' data-message-id="${message.id}">
