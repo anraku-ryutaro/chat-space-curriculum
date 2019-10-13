@@ -1,3 +1,1 @@
-bin/404.html
-bin/422.html
-bin/500html
+*.exe 404.html, 422.html, 500html

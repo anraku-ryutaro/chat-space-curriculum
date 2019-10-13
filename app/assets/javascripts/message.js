@@ -1,7 +1,5 @@
 $(function(){ 
   function buildHTML(message){
-  
-   if ( message.image ) {
 
     var image = "";
 
@@ -21,8 +19,8 @@ $(function(){
         </div>
     </div>`
   return html;
-   };
  }
+ 
 $('.js-form').on('submit', function(e){
  e.preventDefault();
  var formData = new FormData(this);
