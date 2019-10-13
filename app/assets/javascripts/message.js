@@ -2,6 +2,11 @@ $(function(){
   function buildHTML(message){
   
    if ( message.image ) {
+
+    var image = "";
+
+    image = (message.image) ? `<img class="lower-message__image" src="${ massage.image }">`: "";
+
     var html =
     `<div class='chatroom__body-message clearfix' data-message-id="${message.id}">
         <div class='chatroom__body--message-name'>
@@ -15,7 +20,7 @@ $(function(){
             ${image}
         </div>
     </div>`
-return html;
+  return html;
    };
  }
 $('.js-form').on('submit', function(e){
