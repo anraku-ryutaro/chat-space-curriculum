@@ -1,6 +1,6 @@
 $(function() { 
   function buildHTML(message){
-    console.log(message.id)
+    
     var image = "";
 
     image = (message.image) ? `<img class="lower-message__image" src="${ massage.image }">`: "";
