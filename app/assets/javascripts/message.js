@@ -1,6 +1,6 @@
-$(function(){ 
+$(function() { 
   function buildHTML(message){
-
+    
     var image = "";
 
     image = (message.image) ? `<img class="lower-message__image" src="${ massage.image }">`: "";
@@ -44,4 +44,28 @@ $('.js-form').on('submit', function(e){
    });
    return false;
  });
+
+ var reloadMessages = function() {
+  last_message_id = $('.message:last').data("message-id");
+  group_id = $(group.id)
+  $.ajax({
+    url: `groups/${group_id}/api/messages`,
+    type: 'GET',
+    dataType: 'json',
+    data: {id: last_message_id},
+  })
+  .done(function(messages) {
+    var insertHTML = '';
+    messages.forEach(function (message) {
+    insertHTML = buildHTML(message);
+    $('.messages').append(insertHTML); 
+    $('div').animate({scrollTop: $('.messages').height()})
+    })
+  })
+  .fail(function () {
+    alert('自動更新に失敗しました');
+  });
+  setInterval(reloadMessages, 5000);
+  }  
 });
+   
