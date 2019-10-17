@@ -1,27 +1,29 @@
 $(function() { 
   function buildHTML(message){
-    
-    var image = "";
-
-    image = (message.image) ? `<img class="lower-message__image" src="${ massage.image }">`: "";
+    // console.log(message)
+    var image = (message.image) ? `<img class="lower-message__image" src="${message.image}">`: "";
 
     var html =
-    `<div class='chatroom__body-message clearfix' data-message-id="${message.id}">
-        <div class='chatroom__body--message-name'>
-            ${message.name}
-        </div>
-        <div class='chatroom__body--message-time'>
-            ${message.created_at}
-        </div>
-        <div class='chatroom__body--message-body'>
-            <p>${message.content}</p>
-            ${image}
-        </div>
+    `<div class="message" data-message-id="${message.id}">
+    <div class="upper-message">
+    <div class="upper-message__user-name">
+    ${message.name}
+    </div>
+    <div class="upper-message__date">
+    ${message.created_at}
+    </div>
+    </div>
+    <div class="lower-message">
+    <p class="lower-message__content">
+    ${message.content}
+    </p>
+    ${image}
+    </div>
     </div>`
   return html;
  }
  
-$('.js-form').on('submit', function(e){
+$('#new_message').on('submit', function(e){
  e.preventDefault();
  var formData = new FormData(this);
  var url = $(this).attr('action')
@@ -45,14 +47,16 @@ $('.js-form').on('submit', function(e){
    return false;
  });
 
+ $(function(){
  var reloadMessages = function() {
-  last_message_id = $('.message:last').data("message-id");
-  group_id = $(group.id)
+  var last_message_id = $('.message:last').data('message-id');
+  // group_id = $(".group").data("group-id");
+  // console.log(group_id)
   $.ajax({
-    url: `groups/${group_id}/api/messages`,
+    url: 'api/messages',
     type: 'GET',
     dataType: 'json',
-    data: {id: last_message_id},
+    data: {id: last_message_id}
   })
   .done(function(messages) {
     var insertHTML = '';
@@ -65,7 +69,7 @@ $('.js-form').on('submit', function(e){
   .fail(function () {
     alert('自動更新に失敗しました');
   });
-  setInterval(reloadMessages, 5000);
-  }  
+}; 
+setInterval(reloadMessages, 5000);
 });
-   
+});
