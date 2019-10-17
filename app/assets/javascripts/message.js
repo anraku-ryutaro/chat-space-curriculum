@@ -63,7 +63,7 @@ $('#new_message').on('submit', function(e){
     messages.forEach(function (message) {
     insertHTML = buildHTML(message);
     $('.messages').append(insertHTML); 
-    $('div').animate({scrollTop: $('.messages').height()})
+    $('div').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
   })
   .fail(function () {
