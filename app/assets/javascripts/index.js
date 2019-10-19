@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function(){
                     <p class="chat-group-user__name">${user.name}</p>
                     <a class="user-search-add chat-group-user__btn chat-group-user__btn--add js-add-btn" data-user-id=${user.id} data-user-name=${user.name}>追加</a>
                   </div>`;
-        search_list.append(html);
+      search_list.append(html);
     }
   
     function appendNoUser(user){
@@ -62,6 +62,5 @@ $(document).on('turbolinks:load', function(){
       $(document).on("click", ".user-search-remove", function () {
         $(this).parent().remove();
       });
-    });
   });
-  
+});
