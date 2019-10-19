@@ -4,7 +4,7 @@ $(function() {
     var image = (message.image) ? `<img class="lower-message__image" src="${message.image}">`: "";
 
     var html =
-    <div class="message" data-message-id="${message.id}">
+    `<div class="message" data-message-id="${message.id}">
     <div class="upper-message">
     <div class="upper-message__user-name">
     ${message.name}
@@ -19,7 +19,7 @@ $(function() {
     </p>
     ${image}
     </div>
-    </div>
+    </div>`
   return html;
  }
  
@@ -55,6 +55,7 @@ $('#new_message').on('submit', function(e){
   $.ajax({
     url: 'api/messages',
     type: 'GET',
+    dataType: 'json',
     data: {id: last_message_id}
   })
   .done(function(messages) {
