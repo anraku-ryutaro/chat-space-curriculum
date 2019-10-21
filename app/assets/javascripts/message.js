@@ -19,7 +19,7 @@ $(function() {
     </p>
     ${image}
     </div>
-    </div>`
+    </div>`;
   return html;
  }
  
