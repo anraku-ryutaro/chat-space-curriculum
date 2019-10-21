@@ -19,7 +19,7 @@ $(function() {
     </p>
     ${image}
     </div>
-    </div>`;
+    </div>`
   return html;
  }
  
@@ -48,6 +48,7 @@ $('#new_message').on('submit', function(e){
  });
 
  $(function(){
+  if (window.location.href.match(/\/groups\/\d+\/messages/)){
  var reloadMessages = function() {
   var last_message_id = $('.message:last').data('message-id');
   // group_id = $(".group").data("group-id");
@@ -70,6 +71,7 @@ $('#new_message').on('submit', function(e){
     alert('自動更新に失敗しました');
   });
  }; 
+  }
   setInterval(reloadMessages, 5000);
-});
+  });
 });
